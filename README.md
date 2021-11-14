@@ -6,9 +6,8 @@ performance and reducing the amount of API calls to the Kucoin API. All other ca
 ### download
 
 1. ```cd ~/freqtrade/```
-2. ```git clone wget https://github.com/mikekonan/freqtrade-proxy/releases/download/v1.0.4/freqtrade-proxy-linux64
+2. ```git clone wget https://github.com/mikekonan/freqtrade-proxy/releases/download/v1.0.4/freqtrade-proxy-linux64```
 3. ```sudo chmod +x freqtrade-proxy-linux64```
-./freqtrade-proxy -port 8089
 
 ### making it as service for autostart
 1. ```cd /etc/systemd/system``` 
@@ -54,4 +53,6 @@ WantedBy=multi-user.target
         "ccxt_async_config": {
             "enableRateLimit": false
 ```
+
+
 
