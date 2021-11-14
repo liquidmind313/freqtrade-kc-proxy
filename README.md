@@ -51,3 +51,6 @@ WantedBy=multi-user.target
         "ccxt_async_config": {
             "enableRateLimit": false
 ```
+
+### Author: 
+https://github.com/mikekonan/freqtrade-proxy
