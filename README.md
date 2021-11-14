@@ -3,22 +3,41 @@
 Kucoin proxy for freqtrade that is using websockets to maintain candlestick/klines data in memory, thus having great
 performance and reducing the amount of API calls to the Kucoin API. All other calls are proxied as usual.
 
-This project I made just for myself but can add more exchanges in the future.
+### download
 
-## OPS
+1. ```cd ~/freqtrade/```
+2. ```git clone wget https://github.com/mikekonan/freqtrade-proxy/releases/download/v1.0.4/freqtrade-proxy-linux64
+3. ```sudo chmod +x freqtrade-proxy-linux64```
+./freqtrade-proxy -port 8089
 
-### Local
+### making it as service for autostart
+1. ```cd /etc/systemd/system``` 
+2. ```sudo nano prox-service.service``` 
+3. ```copy the text below, in it```
+```
+[Unit]
+Description=proxy freq autostart
+
+[Service]
+User=root
+ExecStart=/root/freqtrade/freqtrade-proxy-linux64 -port 8089
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+```
+4. ```ctrl+s,ctrl+x```
+5. ```sudo systemctl daemon-reload```
+
+### starting the proxy service
+6. ```sudo systemctl start prox-service.service```
+### check for status
+7. ```sudo systemctl status prox-service.service```
+
+
+#### change config.json
 
 ```
-git clone https://github.com/mikekonan/freqtrade-proxy.git
-make build
-./freqtrade-proxy -port 8080
-```
-
-#### config.json
-
-```
-{
     "exchange": {
         "name": "kucoin",
         "key": "",
@@ -27,89 +46,12 @@ make build
             "enableRateLimit": false,
             "urls": {
                 "api": {
-                    "public": "http://127.0.0.1:8080/kucoin",
-                    "private": "http://127.0.0.1:8080/kucoin"
+                    "public": "http://127.0.0.1:8089/kucoin",
+                    "private": "http://127.0.0.1:8089/kucoin"
                 }
             }
         },
         "ccxt_async_config": {
             "enableRateLimit": false
-        }
-    }
-}
 ```
 
-### Docker (suggested way)
-
-```
-docker run --restart=always -p 127.0.0.1:8080:8080 --name freqtrade-proxy -d mikekonan/freqtrade-proxy:main
-```
-
-#### config.json
-
-```
-{
-    "exchange": {
-        "name": "kucoin",
-        "key": "",
-        "secret": "",
-        "ccxt_config": {
-            "enableRateLimit": false,
-            "urls": {
-                "api": {
-                    "public": "http://127.0.0.1:8080/kucoin",
-                    "private": "http://127.0.0.1:8080/kucoin"
-                }
-            }
-        },
-        "ccxt_async_config": {
-            "enableRateLimit": false
-        }
-    }
-}
-```
-
-### Docker-compose (best way)
-
-See example - [docker-compose.yml](docker-compose.yml)
-
-```
-  freqtrade-proxy:
-    image: mikekonan/freqtrade-proxy:main
-    restart: unless-stopped
-    container_name: freqtrade-proxy
-```
-
-#### config.json
-
-```
-{
-    "exchange": {
-        "name": "kucoin",
-        "key": "",
-        "secret": "",
-        "ccxt_config": {
-            "enableRateLimit": false,
-            "urls": {
-                "api": {
-                    "public": "http://freqtrade-proxy:8080/kucoin",
-                    "private": "http://freqtrade-proxy:8080/kucoin"
-                }
-            }
-        },
-        "ccxt_async_config": {
-            "enableRateLimit": false
-        }
-    }
-}
-```
-
-## Donations
-
-Donations are appreciated and will make me motivated to support and improve the project.
-
-USDT TRC20 - TYssA3EUfAagJ9afF6vfwJvwwueTafMbGY
-
-XRP - rNFugeoj3ZN8Wv6xhuLegUBBPXKCyWLRkB 1869777767
-
-DOGE - D6xwe5V9jRkvWksiHiajwZsJ3KJxBVqBUC
