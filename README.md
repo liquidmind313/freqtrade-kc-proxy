@@ -1,4 +1,4 @@
-# freqtrade-proxy
+# freqtrade-kucoin-proxy
 Kucoin proxy for freqtrade that is using websockets to maintain candlestick/klines data in memory, thus having great
 performance and reducing the amount of API calls to the Kucoin API. All other calls are proxied as usual.
 
