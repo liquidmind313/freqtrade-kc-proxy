@@ -1,10 +1,8 @@
 # freqtrade-proxy
-
 Kucoin proxy for freqtrade that is using websockets to maintain candlestick/klines data in memory, thus having great
 performance and reducing the amount of API calls to the Kucoin API. All other calls are proxied as usual.
 
 ### download
-
 1. ```cd ~/freqtrade/```
 2. ```git clone wget https://github.com/mikekonan/freqtrade-proxy/releases/download/v1.0.4/freqtrade-proxy-linux64```
 3. ```sudo chmod +x freqtrade-proxy-linux64```
@@ -34,7 +32,7 @@ WantedBy=multi-user.target
 7. ```sudo systemctl status prox-service.service```
 
 
-#### change config.json
+#### change config.json in root/freqtrade
 
 ```
     "exchange": {
@@ -53,6 +51,3 @@ WantedBy=multi-user.target
         "ccxt_async_config": {
             "enableRateLimit": false
 ```
-
-
-
