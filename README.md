@@ -17,7 +17,7 @@ Description=proxy freq autostart
 
 [Service]
 User=root
-ExecStart=/root/freqtrade/freqtrade-proxy-linux64 -port 8089
+ExecStart=/root/freqtrade/freqtrade-proxy-linux-amd64 -port 8089
 Restart=always
 
 [Install]
