@@ -4,7 +4,7 @@ performance and reducing the amount of API calls to the Kucoin API. All other ca
 
 ### download
 1. ```cd ~/freqtrade/```
-2. ```wget https://github.com/mikekonan/freqtrade-proxy/releases/download/v1.0.10/freqtrade-proxy-linux-amd64```
+2. ```wget https://github.com/mikekonan/freqtrade-proxy/releases/download/v1.0.11/freqtrade-proxy-linux-amd64```
 3. ```sudo chmod +x freqtrade-proxy-linux-amd64```
 
 ### making it as service for autostart
