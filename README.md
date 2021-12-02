@@ -41,6 +41,7 @@ WantedBy=multi-user.target
         "secret": "",
         "ccxt_config": {
             "enableRateLimit": false,
+            "timeout": 60000,
             "urls": {
                 "api": {
                     "public": "http://127.0.0.1:8089/kucoin",
@@ -49,7 +50,8 @@ WantedBy=multi-user.target
             }
         },
         "ccxt_async_config": {
-            "enableRateLimit": false
+            "enableRateLimit": false,
+            "timeout": 60000
 ```
 
 ### Author: 
